@@ -1,0 +1,47 @@
+name: detect_data_drift
+
+entry_points:
+  main:
+    parameters:
+
+      model_artifact:
+        description: "W&B artifact del modelo MLflow"
+        type: string
+
+      reference_dataset:
+        description: "W&B artifact de los datos de referencia"
+        type: string
+
+      gmm_components:
+        description: "Número de componentes para GaussianMixture"
+        type: int
+        default: 3
+
+      drift_magnitude:
+        description: "Magnitud del drift a simular"
+        type: float
+        default: 0.5
+
+      n_samples_synthetic:
+        description: "Número de muestras sintéticas"
+        type: int
+        default: 1000
+
+      p_val_threshold:
+        description: "Umbral de p-value para KSDrift"
+        type: float
+        default: 0.01
+
+      random_seed:
+        description: "Seed para reproducibilidad"
+        type: int
+        default: 42
+
+    command: >-
+      python run.py --model_artifact {model_artifact} \
+                    --reference_dataset {reference_dataset} \
+                    --gmm_components {gmm_components} \
+                    --drift_magnitude {drift_magnitude} \
+                    --n_samples_synthetic {n_samples_synthetic} \
+                    --p_val_threshold {p_val_threshold} \
+                    --random_seed {random_seed}

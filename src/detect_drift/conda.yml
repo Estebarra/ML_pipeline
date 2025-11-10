@@ -1,0 +1,16 @@
+name: detect_drift
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12 
+  - pip
+  - pip:
+      - wandb
+      - pandas
+      - scikit-learn
+      - numpy
+      - mlflow        
+      - xgboost       
+      - scipy         
+      - alibi-detect  

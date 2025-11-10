@@ -18,6 +18,7 @@ STEPS = [
     "train_test_split_data",
     "train_model",
     "test_model",
+    "detect_drift",    
 ]
 
 
@@ -130,6 +131,26 @@ def go(config: DictConfig):
                     "test_dataset": "test_data.csv:latest",
                 },
             )
+
+    if "detect_drift" in active_steps:
+        logger.info("Ejecutando el paso de detección de drift")
+        _ = mlflow.run(
+            f"./src/detect_drift", 
+            "main",
+            env_manager="local",
+            parameters={
+                # Inputs del artefacto
+                "model_artifact": "model_export:latest",
+                "reference_dataset": "test_data.csv:latest",
+                
+                # Parámetros desde config.yaml
+                "gmm_components": config["drift_detection"]["gmm_components"],
+                "drift_magnitude": config["drift_detection"]["drift_magnitude"],
+                "n_samples_synthetic": config["drift_detection"]["n_samples_synthetic"],
+                "p_val_threshold": config["drift_detection"]["p_val_threshold"],
+                "random_seed": config["data_processing"]["random_state"], 
+            },
+        )
 
     return cv_accuracy if cv_accuracy is not None else 0.0
 

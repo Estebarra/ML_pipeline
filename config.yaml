@@ -50,3 +50,9 @@ hydra:
       ++modeling.xgboost.gamma: interval(0.0, 5.0)
       ++modeling.xgboost.reg_alpha: interval(0.0, 10.0)
       ++modeling.xgboost.reg_lambda: interval(0.0, 10.0)
+
+drift_detection:
+  gmm_components: 3
+  drift_magnitude: 0.3
+  n_samples_synthetic: 1000
+  p_val_threshold: 0.01 
