@@ -32,6 +32,8 @@ ML_pipeline/
 │   ├── train_test_split_data/ # Módulo de división de datos
 │   ├── train_model/         # Módulo de entrenamiento
 │   └── test_model/          # Módulo de evaluación
+├── tests/                   # Pruebas unitarias
+│   └──integration/          # Prueba de integración
 ├── outputs/                 # Resultados de experimentos
 └── multirun/               # Resultados de optimización de hiperparámetros
 ```
@@ -256,6 +258,53 @@ docker-compose run --rm pipeline pytest
 3. **Error de conexión con W&B:**
    - Verificar `WANDB_API_KEY` en `.env`
    - Ejecutar `wandb login` si es necesario
+
+## Pruebas Unitarias
+
+Para asegurar la calidad y estabilidad de nuestro código se ha utilizado 'pytest' para realizar pruebas unitarias.
+
+### Configuración del Entorno de Pruebas
+
+1. **Asegurarse de tener un entorno virtual activado**
+
+2. **Instalar pytest**
+   ```bash
+    pip install pytest
+    pip install pytest-cov
+    ```
+
+### Ejecución de pruebas
+
+Se pueden ejecutar las pruebas usando los siguientes comandos desde la raíz del proyecto.
+
+#### Ejecutar todas las pruebas
+
+```bash
+pytest
+```
+
+#### Ejecutar todas las pruebas en modo silencioso
+
+```bash
+pytest -q
+```
+
+#### Ejecutar pruebas de un módulo específico
+
+```bash
+pytest tests/integration/test_pipeline.py
+pytest tests/test_load_data.py
+pytest tests/test_clean_data.py
+pytest tests/test_train_test_split_data.py
+pytest tests/test_train_model.py
+pytest tests/test_evaluate_model.py
+```
+
+#### Ver reporte de cobertura
+
+```bash
+pytest --cov=src
+```
 
 ### Logs y Debugging
 
