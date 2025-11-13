@@ -105,6 +105,9 @@ python main.py
 # Ejecutar solo carga de datos
 docker-compose run --rm pipeline python main.py main.steps="load_data"
 
+# Ejecutar con FastAPI
+docker run -d -p 8000:8000 --name ml-pipeline-container ml-pipeline:latest
+
 # Ejecutar múltiples pasos
 docker-compose run --rm pipeline python main.py main.steps="load_data,clean_data,train_test_split_data"
 
