@@ -244,24 +244,6 @@ poetry run pytest
 docker-compose run --rm pipeline pytest
 ```
 
-## Solución de Problemas
-
-### Problemas Comunes
-
-1. **Error de permisos en Docker:**
-   ```bash
-   sudo docker-compose run --rm pipeline python main.py
-   ```
-
-2. **Problemas con dependencias:**
-   ```bash
-   docker-compose build --no-cache
-   ```
-
-3. **Error de conexión con W&B:**
-   - Verificar `WANDB_API_KEY` en `.env`
-   - Ejecutar `wandb login` si es necesario
-
 ## Pruebas Unitarias
 
 Para asegurar la calidad y estabilidad de nuestro código se ha utilizado 'pytest' para realizar pruebas unitarias.
@@ -308,6 +290,24 @@ pytest tests/test_evaluate_model.py
 ```bash
 pytest --cov=src
 ```
+
+## Solución de Problemas
+
+### Problemas Comunes
+
+1. **Error de permisos en Docker:**
+   ```bash
+   sudo docker-compose run --rm pipeline python main.py
+   ```
+
+2. **Problemas con dependencias:**
+   ```bash
+   docker-compose build --no-cache
+   ```
+
+3. **Error de conexión con W&B:**
+   - Verificar `WANDB_API_KEY` en `.env`
+   - Ejecutar `wandb login` si es necesario
 
 ### Logs y Debugging
 
