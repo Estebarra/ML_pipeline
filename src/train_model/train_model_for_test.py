@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def train_model(xgb_config: dict) -> Pipeline:
     """
-    Construye el pipeline del modelo con preprocesador y estimador XGBoost.
+    Construye el pipeline del modelo con preprocesador XGBoost.
     """
     logger.info("Construyendo el pipeline...")
     
