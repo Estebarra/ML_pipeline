@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:latest
+FROM python:3.12-slim
 
 WORKDIR /app
 
@@ -7,7 +7,12 @@ ENV PYTHONUNBUFFERED=1 \
     PORT=8000
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential gcc g++ gfortran curl \
+    build-essential \
+    gcc \
+    g++ \
+    gfortran \
+    curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir poetry==1.7.1
@@ -17,11 +22,17 @@ COPY pyproject.toml poetry.lock* /app/
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
 
-# copy project (includes main.py, config.yaml, src/ and xgboost_dir)
+RUN pip install --no-cache-dir "numba>=0.60.0" \
+    && pip install --no-cache-dir git+https://github.com/SeldonIO/alibi-detect.git \
+    && pip install --no-cache-dir hydra-core hydra-optuna-sweeper \
+    && pip install --no-cache-dir "seaborn>=0.13.2"
+
+# copy project (includes main.py, config.yaml, src/ and xgboost_dir)    
 COPY . /app
 
 # make sure model artifact folder is readable (no-op if it doesn't exist)
-RUN chmod -R a+rX /app/xgboost_dir || true
+RUN mkdir -p outputs multirun \
+    && chmod -R a+rX /app/xgboost_dir || true
 
 EXPOSE 8000
 

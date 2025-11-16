@@ -6,7 +6,7 @@ flavors:
     loader_module: mlflow.sklearn
     model_path: model.pkl
     predict_fn: predict
-    python_version: 3.13.1
+    python_version: 3.12.12
   sklearn:
     code: null
     pickled_model: model.pkl
@@ -14,8 +14,8 @@ flavors:
     sklearn_version: 1.7.2
 is_signature_from_type_hint: false
 mlflow_version: 2.22.2
-model_size_bytes: 2203016
-model_uuid: 10d8428d2c174b23afebe70871580a79
+model_size_bytes: 2204180
+model_uuid: f70d7207ed0a41489efe344fae667b3b
 prompts: null
 saved_input_example_info:
   artifact_path: input_example.json
@@ -35,4 +35,4 @@ signature:
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2025-10-31 22:33:18.566764'
+utc_time_created: '2025-11-16 08:45:03.839638'
