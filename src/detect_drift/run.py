@@ -70,7 +70,7 @@ def go(args):
     try:
         logger.info("Generando gráficos locales (imágenes .png)")
 
-        # --- GRÁFICO 1: SCATTER PLOT DE FEATURES (EXISTENTE) ---
+        # --- GRÁFICO 1: SCATTER PLOT DE FEATURES
         FEATURE_INDEX_X = 0
         FEATURE_INDEX_Y = 1
         logger.info(f"Generando scatter_plot_features.png (Features {FEATURE_INDEX_X} vs {FEATURE_INDEX_Y})")
@@ -85,7 +85,7 @@ def go(args):
         plt.savefig("scatter_plot_features.png")
         plt.close(fig1)
 
-        # --- GRÁFICO 2: PREDICCIONES (Histograma, EXISTENTE) ---
+        # --- GRÁFICO 2: PREDICCIONES
         logger.info("Generando histograma_predicciones.png")
 
         fig2, ax2 = plt.subplots(figsize=(10, 6))
@@ -98,8 +98,8 @@ def go(args):
         plt.savefig("histograma_predicciones.png")
         plt.close(fig2)
 
-        # --- GRÁFICO 3: DISTRIBUCIÓN DE UNA FEATURE ESPECÍFICA (NUEVO) ---
-        FEATURE_TO_PLOT_INDEX = 0 # Puedes cambiar esto para otras features
+        # --- GRÁFICO 3: DISTRIBUCIÓN DE UNA FEATURE ESPECÍFICA
+        FEATURE_TO_PLOT_INDEX = 0
         logger.info(f"Generando distribucion_feature_{FEATURE_TO_PLOT_INDEX}.png")
 
         fig3, ax3 = plt.subplots(figsize=(10, 6))
