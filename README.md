@@ -609,11 +609,6 @@ curl http://localhost:8000/ready
 curl http://localhost:8000/info
 ```
 
-## Autor
-
-**Luis Barranco**
-- Email: xiuh.estebarra@gmail.com
-
 ## Contacto y Soporte
 
 Para preguntas, sugerencias o reportar problemas, por favor crear un issue en el repositorio de GitHub o contactar al autor directamente.
